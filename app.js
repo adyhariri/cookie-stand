@@ -2,6 +2,7 @@
 let totalPerDayForAll=[0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 let hours=['','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','Daily Location Total'];
 const parentElement = document.getElementById('mainContent');
+const addCity = document.getElementById('locationForm');
 let table =document.createElement('table');
   parentElement.appendChild(table);
   
@@ -37,6 +38,7 @@ Locations.prototype.amountCockiesPerHour=function(average,random){
            }
            for(let j=0;j<this.amount.length;j++){
                totalPerDayForAll[j]+=this.amount[j];
+               console.log(totalPerDayForAll);
            }
 
     
@@ -119,3 +121,17 @@ function randomCustomPerHour(min, max) {
   tdTotalOfTotals.textContent=totalOfTotals;
   }
   tableHeaderAndFooter();
+  
+  addCity.addEventListener('submit',clickAdd)
+  function clickAdd(event) {
+      
+    event.preventDefault();
+    const cName=event.target.cityName.value;
+    const minNum=event.target.minimum.value;
+    const maxNum=event.target.maximum.value;
+    const avg=event.target.avgCocPerSale.value;
+    let addingCity =new Locations(cName,minNum,maxNum,avg);
+    addingCity.getRandom();
+    addingCity.amountCockiesPerHour(this.avgCockiesPerSale,this.random);
+    addingCity.renderTableContent();
+  }

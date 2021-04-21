@@ -52,3 +52,7 @@ table {
   main .photos  img {
     width: 500px;
   }
+  fieldset {
+    width: 50%;
+    background-color: whitesmoke;
+  }
