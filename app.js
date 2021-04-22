@@ -133,5 +133,7 @@ function randomCustomPerHour(min, max) {
     let addingCity =new Locations(cName,minNum,maxNum,avg);
     addingCity.getRandom();
     addingCity.amountCockiesPerHour(this.avgCockiesPerSale,this.random);
+    // parentElement.innerHTML();
     addingCity.renderTableContent();
+
   }
